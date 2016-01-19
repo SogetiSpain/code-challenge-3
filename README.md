@@ -3,11 +3,11 @@ Sogeti Code Challenge de Enero 2016
 =====================================
 Desafío #3: Biblioteca pública
 -----------------------------------
-*Las bibliotecas permiten tener en préstamo libros durante un período de tiempo, sin coste. Es un servicio público y como tal, no siempre está al día de la tecnología. Vamos a ayudarles con un sistema de gestión de préstamos.*
+*Las bibliotecas permiten tener en préstamo documentos como libros y revistas durante un período de tiempo, sin coste. Es un servicio público y como tal, no siempre está al día de la tecnología. Vamos a ayudarles con un sistema de gestión de préstamos.*
  
 Escribe un programa que permita registrar libros, hacer préstamos de libros y devolver préstamos de libros. Para cada usuario se permite tener como mucho 3 libros prestados al mismo tiempo, y por un período de 30 días a partir de la fecha del préstamo. Si el usuario devuelve los libros prestados después de los 30 días, tiene que pagar una multa antes de poder tomar prestados los libros otra vez.
 
-__Por razones de alcance, este desafío está dividido en dos. El siguente Code Challenge continuará con requerimientos nuevos, así que prestad especial atención en hacer un diseño flexible de vuestra solución.__
+__Por razones de alcance, este desafío está dividido en dos.__ El siguente Code Challenge continuará con requerimientos nuevos, así que prestad especial atención en hacer un diseño flexible de vuestra solución para que pueda absorber los cambios sin tener que reescribirse desde cero.
  
 
 Ejemplo de salida del programa
