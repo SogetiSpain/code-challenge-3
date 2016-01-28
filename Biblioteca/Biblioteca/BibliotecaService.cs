@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 
 namespace Biblioteca
 {
@@ -24,7 +23,7 @@ namespace Biblioteca
             using (var db = new BBDD_BibliotecaEntities())
             {
                 var libros = db.Set<Libros>();
-                libros.Add(new Libros { Titulo = name, Disponible = true });
+                libros.Add(new Libros {Titulo = name, Disponible = true});
 
                 db.SaveChanges();
             }
@@ -55,6 +54,5 @@ namespace Biblioteca
                 return libros.Find(id);
             }
         }
-        
     }
 }

@@ -9,6 +9,5 @@
         bool ReturnBook(int id);
 
         Libros Find(string titulo);
-
     }
 }
