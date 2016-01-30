@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Biblioteca
 {
@@ -44,6 +45,8 @@ namespace Biblioteca
 
         private static void DevolverLibro()
         {
+            Console.WriteLine("Introduzca el usuario:");
+            var usuario = Console.ReadLine();
             Console.WriteLine("Introduzca el título del libro:");
             var titulo = Console.ReadLine();
             var libro = BibliotecaService.Find(titulo);
@@ -56,6 +59,11 @@ namespace Biblioteca
 
         private static void PrestarLibro()
         {
+            Console.WriteLine("Estos son los libros que tenemos:");
+            ShowAllBooks();
+
+            Console.WriteLine("Introduzca el usuario:");
+            var usuario = Console.ReadLine();
             Console.WriteLine("Introduzca el título del libro:");
             var titulo = Console.ReadLine();
             var libro = BibliotecaService.Find(titulo);
@@ -72,6 +80,15 @@ namespace Biblioteca
                 Console.WriteLine("El libro " + titulo + " no está disponible ahora mismo.");
             }
         }
+
+        private static void ShowAllBooks()
+        {
+            var books =  BibliotecaService.GetAllBooks();
+            for (var i = 0; i < books.Count; i++)
+            {
+                Console.WriteLine(i +" - " +books[i].Titulo);
+            }
+        }   
 
         private static void RegistrarLibro()
         {

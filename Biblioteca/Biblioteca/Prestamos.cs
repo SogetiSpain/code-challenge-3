@@ -12,19 +12,14 @@ namespace Biblioteca
     using System;
     using System.Collections.Generic;
     
-    public partial class Libros
+    public partial class Prestamos
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Libros()
-        {
-            this.Prestamos = new HashSet<Prestamos>();
-        }
-    
         public int Id { get; set; }
-        public string Titulo { get; set; }
-        public Nullable<bool> Disponible { get; set; }
+        public Nullable<int> LibroId { get; set; }
+        public Nullable<int> UsuarioId { get; set; }
+        public Nullable<System.DateTime> FechaPrestamo { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Prestamos> Prestamos { get; set; }
+        public virtual Libros Libros { get; set; }
+        public virtual Usuarios Usuarios { get; set; }
     }
 }

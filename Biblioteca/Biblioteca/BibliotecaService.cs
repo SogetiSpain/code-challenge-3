@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Biblioteca
 {
@@ -52,6 +53,15 @@ namespace Biblioteca
                 var libros = db.Set<Libros>();
                 var id = libros.ToList().First(x => x.Titulo.Trim() == titulo).Id;
                 return libros.Find(id);
+            }
+        }
+
+        public List<Libros> GetAllBooks()
+        {
+            using (var db = new BBDD_BibliotecaEntities())
+            {
+                var libros = db.Set<Libros>();
+                return libros.ToList();
             }
         }
     }

@@ -6,6 +6,11 @@
     <edmx:Diagrams>
       <Diagram DiagramId="46b614e40d2743f08b04b7903bc013dc" Name="Diagram1">
         <EntityTypeShape EntityType="BBDD_BibliotecaModel.Libros" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BBDD_BibliotecaModel.C__RefactorLog" Width="1.5" PointX="3.375" PointY="4" />
+        <EntityTypeShape EntityType="BBDD_BibliotecaModel.Prestamos" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="BBDD_BibliotecaModel.Usuarios" Width="1.5" PointX="0.75" PointY="4" />
+        <AssociationConnector Association="BBDD_BibliotecaModel.FK__Prestamos__Libro__1273C1CD" />
+        <AssociationConnector Association="BBDD_BibliotecaModel.FK__Prestamos__Usuar__15502E78" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

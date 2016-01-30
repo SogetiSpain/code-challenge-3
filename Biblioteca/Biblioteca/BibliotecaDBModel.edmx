@@ -5,10 +5,13 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BBDD_BibliotecaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012"
-              Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator"
-              xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation"
-              xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BBDD_BibliotecaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
         <EntityType Name="Libros">
           <Key>
             <PropertyRef Name="Id" />
@@ -17,11 +20,61 @@
           <Property Name="Titulo" Type="nchar" MaxLength="10" />
           <Property Name="Disponible" Type="bit" />
         </EntityType>
+        <EntityType Name="Prestamos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="LibroId" Type="int" />
+          <Property Name="UsuarioId" Type="int" />
+          <Property Name="FechaPrestamo" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__Prestamos__Libro__1273C1CD">
+          <End Role="Libros" Type="Self.Libros" Multiplicity="0..1" />
+          <End Role="Prestamos" Type="Self.Prestamos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Libros">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Prestamos">
+              <PropertyRef Name="LibroId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Prestamos__Usuar__15502E78">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="Prestamos" Type="Self.Prestamos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Prestamos">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="BBDD_BibliotecaModelStoreContainer">
+          <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Libros" EntityType="Self.Libros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prestamos" EntityType="Self.Prestamos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Prestamos__Libro__1273C1CD" Association="Self.FK__Prestamos__Libro__1273C1CD">
+            <End Role="Libros" EntitySet="Libros" />
+            <End Role="Prestamos" EntitySet="Prestamos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Prestamos__Usuar__15502E78" Association="Self.FK__Prestamos__Usuar__15502E78">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Prestamos" EntitySet="Prestamos" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BBDD_BibliotecaModel" Alias="Self" annotation:UseStrongSpatialTypes="false"
@@ -35,10 +88,71 @@
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Titulo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="Disponible" Type="Boolean" />
+          <NavigationProperty Name="Prestamos" Relationship="BBDD_BibliotecaModel.FK__Prestamos__Libro__1273C1CD" FromRole="Libros" ToRole="Prestamos" />
         </EntityType>
         <EntityContainer Name="BBDD_BibliotecaEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Libros" EntityType="Self.Libros" />
+          <EntitySet Name="C__RefactorLog" EntityType="BBDD_BibliotecaModel.C__RefactorLog" />
+          <EntitySet Name="Prestamos" EntityType="BBDD_BibliotecaModel.Prestamos" />
+          <EntitySet Name="Usuarios" EntityType="BBDD_BibliotecaModel.Usuarios" />
+          <AssociationSet Name="FK__Prestamos__Libro__1273C1CD" Association="BBDD_BibliotecaModel.FK__Prestamos__Libro__1273C1CD">
+            <End Role="Libros" EntitySet="Libros" />
+            <End Role="Prestamos" EntitySet="Prestamos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Prestamos__Usuar__15502E78" Association="BBDD_BibliotecaModel.FK__Prestamos__Usuar__15502E78">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Prestamos" EntitySet="Prestamos" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="C__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Prestamos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="LibroId" Type="Int32" />
+          <Property Name="UsuarioId" Type="Int32" />
+          <Property Name="FechaPrestamo" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Libros" Relationship="BBDD_BibliotecaModel.FK__Prestamos__Libro__1273C1CD" FromRole="Prestamos" ToRole="Libros" />
+          <NavigationProperty Name="Usuarios" Relationship="BBDD_BibliotecaModel.FK__Prestamos__Usuar__15502E78" FromRole="Prestamos" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Prestamos" Relationship="BBDD_BibliotecaModel.FK__Prestamos__Usuar__15502E78" FromRole="Usuarios" ToRole="Prestamos" />
+        </EntityType>
+        <Association Name="FK__Prestamos__Libro__1273C1CD">
+          <End Type="BBDD_BibliotecaModel.Libros" Role="Libros" Multiplicity="0..1" />
+          <End Type="BBDD_BibliotecaModel.Prestamos" Role="Prestamos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Libros">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Prestamos">
+              <PropertyRef Name="LibroId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Prestamos__Usuar__15502E78">
+          <End Type="BBDD_BibliotecaModel.Usuarios" Role="Usuarios" Multiplicity="0..1" />
+          <End Type="BBDD_BibliotecaModel.Prestamos" Role="Prestamos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Prestamos">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -52,6 +166,31 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Titulo" ColumnName="Titulo" />
                 <ScalarProperty Name="Disponible" ColumnName="Disponible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C__RefactorLog">
+            <EntityTypeMapping TypeName="BBDD_BibliotecaModel.C__RefactorLog">
+              <MappingFragment StoreEntitySet="__RefactorLog">
+                <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prestamos">
+            <EntityTypeMapping TypeName="BBDD_BibliotecaModel.Prestamos">
+              <MappingFragment StoreEntitySet="Prestamos">
+                <ScalarProperty Name="FechaPrestamo" ColumnName="FechaPrestamo" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="LibroId" ColumnName="LibroId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="BBDD_BibliotecaModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
