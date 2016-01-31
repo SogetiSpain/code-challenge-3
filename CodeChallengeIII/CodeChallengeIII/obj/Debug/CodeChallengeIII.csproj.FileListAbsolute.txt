@@ -1,0 +1,6 @@
+C:\Users\Marc F. Vidal\Documents\GitHub\code-challenge-3\CodeChallengeIII\CodeChallengeIII\bin\Debug\CodeChallengeIII.exe.config
+C:\Users\Marc F. Vidal\Documents\GitHub\code-challenge-3\CodeChallengeIII\CodeChallengeIII\bin\Debug\CodeChallengeIII.exe
+C:\Users\Marc F. Vidal\Documents\GitHub\code-challenge-3\CodeChallengeIII\CodeChallengeIII\bin\Debug\CodeChallengeIII.pdb
+C:\Users\Marc F. Vidal\Documents\GitHub\code-challenge-3\CodeChallengeIII\CodeChallengeIII\obj\Debug\CodeChallengeIII.csprojResolveAssemblyReference.cache
+C:\Users\Marc F. Vidal\Documents\GitHub\code-challenge-3\CodeChallengeIII\CodeChallengeIII\obj\Debug\CodeChallengeIII.exe
+C:\Users\Marc F. Vidal\Documents\GitHub\code-challenge-3\CodeChallengeIII\CodeChallengeIII\obj\Debug\CodeChallengeIII.pdb
