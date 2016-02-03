@@ -77,6 +77,9 @@
     <Compile Include="Libros.cs">
       <DependentUpon>BibliotecaDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Multas.cs">
+      <DependentUpon>BibliotecaDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Prestamos.cs">
       <DependentUpon>BibliotecaDBModel.tt</DependentUpon>
     </Compile>
