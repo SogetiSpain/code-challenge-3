@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D19C53D5-0BC8-40D0-BB91-718C11CD9D84}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{C7EB9272-B978-4689-8EFA-18718543AE06}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Biblioteca</RootNamespace>
-    <AssemblyName>Biblioteca</AssemblyName>
+    <RootNamespace>DataLayer</RootNamespace>
+    <AssemblyName>DataLayer</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -54,23 +51,62 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BibliotecaService.cs" />
-    <Compile Include="IBibliotecaService.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="BibliotecaDBModel.Context.cs">
+      <DependentUpon>BibliotecaDBModel.Context.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="BibliotecaDBModel.cs">
+      <DependentUpon>BibliotecaDBModel.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="BibliotecaDBModel.Designer.cs">
+      <DependentUpon>BibliotecaDBModel.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="C__RefactorLog.cs">
+      <DependentUpon>BibliotecaDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Libros.cs">
+      <DependentUpon>BibliotecaDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Multas.cs">
+      <DependentUpon>BibliotecaDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Prestamos.cs">
+      <DependentUpon>BibliotecaDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Usuarios.cs">
+      <DependentUpon>BibliotecaDBModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="BibliotecaDBModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BibliotecaDBModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BibliotecaDBModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BibliotecaDBModel.edmx</DependentUpon>
+      <LastGenOutput>BibliotecaDBModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="BibliotecaDBModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BibliotecaDBModel.edmx</DependentUpon>
+      <LastGenOutput>BibliotecaDBModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="BibliotecaDBModel.edmx.diagram">
+      <DependentUpon>BibliotecaDBModel.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DataLayer\DataLayer.csproj">
-      <Project>{C7EB9272-B978-4689-8EFA-18718543AE06}</Project>
-      <Name>DataLayer</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

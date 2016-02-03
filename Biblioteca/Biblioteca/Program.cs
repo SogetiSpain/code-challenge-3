@@ -65,10 +65,7 @@ namespace Biblioteca
                 BibliotecaService.ReturnBook(libro.Id);
 
                 Console.WriteLine("La fecha de devolución es: " + DateTime.Now.Date.ToShortDateString());
-
                 var fechaLimite = borrowedBooks.First(x => x.LibroId == libro.Id).FechaPrestamo.AddMonths(1);
-
-                //var fechaLimite = borrowedBooks.First(x => BibliotecaService.FindBook(x.LibroId).Titulo == titulo).FechaPrestamo.AddMonths(1);
                 if (fechaLimite < DateTime.Now.Date)
                 {
                     Console.WriteLine("La devolución se ha realizado tarde, debe pagar una multa antes de volver a alquilar mas libros");

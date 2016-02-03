@@ -13,7 +13,7 @@ namespace Biblioteca
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class BBDD_BibliotecaEntities : DbContext
+    public partial class BBDD_BibliotecaEntities : DbContext, IDisposable
     {
         public BBDD_BibliotecaEntities()
             : base("name=BBDD_BibliotecaEntities")
@@ -30,5 +30,6 @@ namespace Biblioteca
         public virtual DbSet<Prestamos> Prestamos { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
         public virtual DbSet<Multas> Multas { get; set; }
+      
     }
 }
