@@ -25,9 +25,10 @@ namespace Biblioteca
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Libros> Libros { get; set; }
         public virtual DbSet<C__RefactorLog> C__RefactorLog { get; set; }
+        public virtual DbSet<Libros> Libros { get; set; }
         public virtual DbSet<Prestamos> Prestamos { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
+        public virtual DbSet<Multas> Multas { get; set; }
     }
 }

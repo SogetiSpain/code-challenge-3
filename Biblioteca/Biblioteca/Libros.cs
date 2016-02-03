@@ -22,7 +22,6 @@ namespace Biblioteca
     
         public int Id { get; set; }
         public string Titulo { get; set; }
-        public Nullable<bool> Disponible { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Prestamos> Prestamos { get; set; }

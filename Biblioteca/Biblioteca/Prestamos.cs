@@ -15,9 +15,9 @@ namespace Biblioteca
     public partial class Prestamos
     {
         public int Id { get; set; }
-        public Nullable<int> LibroId { get; set; }
-        public Nullable<int> UsuarioId { get; set; }
-        public Nullable<System.DateTime> FechaPrestamo { get; set; }
+        public int LibroId { get; set; }
+        public int UsuarioId { get; set; }
+        public System.DateTime FechaPrestamo { get; set; }
     
         public virtual Libros Libros { get; set; }
         public virtual Usuarios Usuarios { get; set; }

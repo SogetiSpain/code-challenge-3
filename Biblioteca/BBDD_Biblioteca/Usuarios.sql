@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [dbo].[Usuarios]
 (
-	[Id] INT NOT NULL PRIMARY KEY, 
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
     [Nombre] NVARCHAR(50) NULL
 )

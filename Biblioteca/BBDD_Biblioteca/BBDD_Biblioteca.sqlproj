@@ -62,5 +62,6 @@
     <Build Include="Libros.sql" />
     <Build Include="Prestamos.sql" />
     <Build Include="Usuarios.sql" />
+    <Build Include="Multas.sql" />
   </ItemGroup>
 </Project>

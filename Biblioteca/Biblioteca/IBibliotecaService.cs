@@ -7,12 +7,30 @@ namespace Biblioteca
     {
         bool RegistreBook(string name);
 
-        bool LoanBook(int id);
+        bool LoanBook(int libroId, int usuarioId);
 
-        bool ReturnBook(int id);
+        bool ReturnBook(int libroId);
 
-        Libros Find(string titulo);
+        Libros FindBook(string titulo);
+
+        Libros FindBook(int libroId);
 
         List<Libros> GetAllBooks();
+
+        Usuarios FindUsuario(string nombre);
+
+        bool CrearUsuario(string nombreUsuario);
+
+        bool ExistUser(string nombreUsuario);
+
+        bool IsBookBorrowed(int libroId);
+
+        bool CanBorrowBooks(int usuarioId);
+
+        List<Prestamos> GetOwnBorrowedBooks(int usuarioId);
+
+        bool AddFine(int usuarioId);
+
+
     }
 }
