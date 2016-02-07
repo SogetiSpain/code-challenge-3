@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [dbo].[Libros]
 (
 	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
-    [Titulo] NCHAR(10) NULL, 
+    [Titulo] VARCHAR(50) NULL, 
 )

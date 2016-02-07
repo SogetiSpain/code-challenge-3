@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Biblioteca
+namespace DataLayer
 {
     using System;
     using System.Collections.Generic;

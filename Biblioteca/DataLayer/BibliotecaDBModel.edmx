@@ -17,7 +17,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Titulo" Type="nchar" MaxLength="10" />
+          <Property Name="Titulo" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Multas">
           <Key>
@@ -109,16 +109,19 @@
           <EntitySet Name="Libros" EntityType="BBDD_BibliotecaModel.Libros" />
           <EntitySet Name="Prestamos" EntityType="BBDD_BibliotecaModel.Prestamos" />
           <EntitySet Name="Usuarios" EntityType="BBDD_BibliotecaModel.Usuarios" />
-          <AssociationSet Name="FK__Prestamos__Libro__29572725" Association="BBDD_BibliotecaModel.FK__Prestamos__Libro__29572725">
+          <AssociationSet Name="FK__Prestamos__Libro__29572725"
+                          Association="BBDD_BibliotecaModel.FK__Prestamos__Libro__29572725">
             <End Role="Libros" EntitySet="Libros" />
             <End Role="Prestamos" EntitySet="Prestamos" />
           </AssociationSet>
-          <AssociationSet Name="FK__Prestamos__Usuar__2A4B4B5E" Association="BBDD_BibliotecaModel.FK__Prestamos__Usuar__2A4B4B5E">
+          <AssociationSet Name="FK__Prestamos__Usuar__2A4B4B5E"
+                          Association="BBDD_BibliotecaModel.FK__Prestamos__Usuar__2A4B4B5E">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="Prestamos" EntitySet="Prestamos" />
           </AssociationSet>
           <EntitySet Name="Multas" EntityType="BBDD_BibliotecaModel.Multas" />
-          <AssociationSet Name="FK__Multas__UsuarioI__2D27B809" Association="BBDD_BibliotecaModel.FK__Multas__UsuarioI__2D27B809">
+          <AssociationSet Name="FK__Multas__UsuarioI__2D27B809"
+                          Association="BBDD_BibliotecaModel.FK__Multas__UsuarioI__2D27B809">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="Multas" EntitySet="Multas" />
           </AssociationSet>
@@ -134,8 +137,9 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Titulo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Prestamos" Relationship="BBDD_BibliotecaModel.FK__Prestamos__Libro__29572725" FromRole="Libros" ToRole="Prestamos" />
+          <Property Name="Titulo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Prestamos" Relationship="BBDD_BibliotecaModel.FK__Prestamos__Libro__29572725"
+                              FromRole="Libros" ToRole="Prestamos" />
         </EntityType>
         <EntityType Name="Prestamos">
           <Key>
@@ -145,8 +149,10 @@
           <Property Name="LibroId" Type="Int32" Nullable="false" />
           <Property Name="UsuarioId" Type="Int32" Nullable="false" />
           <Property Name="FechaPrestamo" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Libros" Relationship="BBDD_BibliotecaModel.FK__Prestamos__Libro__29572725" FromRole="Prestamos" ToRole="Libros" />
-          <NavigationProperty Name="Usuarios" Relationship="BBDD_BibliotecaModel.FK__Prestamos__Usuar__2A4B4B5E" FromRole="Prestamos" ToRole="Usuarios" />
+          <NavigationProperty Name="Libros" Relationship="BBDD_BibliotecaModel.FK__Prestamos__Libro__29572725"
+                              FromRole="Prestamos" ToRole="Libros" />
+          <NavigationProperty Name="Usuarios" Relationship="BBDD_BibliotecaModel.FK__Prestamos__Usuar__2A4B4B5E"
+                              FromRole="Prestamos" ToRole="Usuarios" />
         </EntityType>
         <EntityType Name="Usuarios">
           <Key>
@@ -154,8 +160,10 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Prestamos" Relationship="BBDD_BibliotecaModel.FK__Prestamos__Usuar__2A4B4B5E" FromRole="Usuarios" ToRole="Prestamos" />
-          <NavigationProperty Name="Multas" Relationship="BBDD_BibliotecaModel.FK__Multas__UsuarioI__2D27B809" FromRole="Usuarios" ToRole="Multas" />
+          <NavigationProperty Name="Prestamos" Relationship="BBDD_BibliotecaModel.FK__Prestamos__Usuar__2A4B4B5E"
+                              FromRole="Usuarios" ToRole="Prestamos" />
+          <NavigationProperty Name="Multas" Relationship="BBDD_BibliotecaModel.FK__Multas__UsuarioI__2D27B809"
+                              FromRole="Usuarios" ToRole="Multas" />
         </EntityType>
         <Association Name="FK__Prestamos__Libro__29572725">
           <End Type="BBDD_BibliotecaModel.Libros" Role="Libros" Multiplicity="1" />
@@ -187,7 +195,8 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UsuarioId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Usuarios" Relationship="BBDD_BibliotecaModel.FK__Multas__UsuarioI__2D27B809" FromRole="Multas" ToRole="Usuarios" />
+          <NavigationProperty Name="Usuarios" Relationship="BBDD_BibliotecaModel.FK__Multas__UsuarioI__2D27B809"
+                              FromRole="Multas" ToRole="Usuarios" />
         </EntityType>
         <Association Name="FK__Multas__UsuarioI__2D27B809">
           <End Type="BBDD_BibliotecaModel.Usuarios" Role="Usuarios" Multiplicity="1" />
@@ -201,7 +210,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        </Schema>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
