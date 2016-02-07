@@ -1,0 +1,12 @@
+C:\Users\ramon\onedrive\documents\visual studio 2015\Projects\LibrarySolution\DataServiceLayer\bin\Debug\DataServiceLayer.dll.config
+C:\Users\ramon\onedrive\documents\visual studio 2015\Projects\LibrarySolution\DataServiceLayer\bin\Debug\DataServiceLayer.dll
+C:\Users\ramon\onedrive\documents\visual studio 2015\Projects\LibrarySolution\DataServiceLayer\bin\Debug\DataServiceLayer.pdb
+C:\Users\ramon\onedrive\documents\visual studio 2015\Projects\LibrarySolution\DataServiceLayer\bin\Debug\EntityFramework.dll
+C:\Users\ramon\onedrive\documents\visual studio 2015\Projects\LibrarySolution\DataServiceLayer\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ramon\onedrive\documents\visual studio 2015\Projects\LibrarySolution\DataServiceLayer\bin\Debug\IDataServiceLayer.dll
+C:\Users\ramon\onedrive\documents\visual studio 2015\Projects\LibrarySolution\DataServiceLayer\bin\Debug\IDataServiceLayer.pdb
+C:\Users\ramon\onedrive\documents\visual studio 2015\Projects\LibrarySolution\DataServiceLayer\bin\Debug\EntityFramework.xml
+C:\Users\ramon\onedrive\documents\visual studio 2015\Projects\LibrarySolution\DataServiceLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ramon\onedrive\documents\visual studio 2015\Projects\LibrarySolution\DataServiceLayer\obj\Debug\DataServiceLayer.csprojResolveAssemblyReference.cache
+C:\Users\ramon\onedrive\documents\visual studio 2015\Projects\LibrarySolution\DataServiceLayer\obj\Debug\DataServiceLayer.dll
+C:\Users\ramon\onedrive\documents\visual studio 2015\Projects\LibrarySolution\DataServiceLayer\obj\Debug\DataServiceLayer.pdb
