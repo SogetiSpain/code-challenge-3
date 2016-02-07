@@ -64,4 +64,7 @@
     <Build Include="Usuarios.sql" />
     <Build Include="Multas.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="BBDD_Biblioteca.publish.xml" />
+  </ItemGroup>
 </Project>
