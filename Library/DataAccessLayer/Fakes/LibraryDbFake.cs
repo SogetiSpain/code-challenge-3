@@ -16,7 +16,7 @@ using System.Threading.Tasks;
             new BookEntity() {Id = 2, BookTitle = "Cabo de trafalgar", AuthorName = "Arturo Perez Reverte"},
             new BookEntity() {Id = 3, BookTitle = "Ángeles y demonios", AuthorName = "Dan Brown"},
             new BookEntity() {Id = 4, BookTitle = "1984", AuthorName = "George Orwell"},
-            new BookEntity() {Id = 4, BookTitle = "Polvo", AuthorName = "Patricia Cornwell"}
+            new BookEntity() {Id = 5, BookTitle = "Polvo", AuthorName = "Patricia Cornwell"}
         };
 
         private List<BookingEntity> _bookingTable = new List<BookingEntity>(){
@@ -126,6 +126,7 @@ using System.Threading.Tasks;
             {
                 idCounter++;
             }
+            penalty.Id = idCounter;
             _penaltyTable.Add(penalty);
             return true;
         }
