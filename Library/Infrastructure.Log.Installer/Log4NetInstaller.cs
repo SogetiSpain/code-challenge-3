@@ -1,11 +1,12 @@
-﻿using Infrastructure.Log.Interface;
-using Infrastructure.Log.Implementation;
+﻿
 namespace Infrastructure.Log.Installer
 {
     using Castle.Core;
     using Castle.MicroKernel.Registration;
     using Castle.MicroKernel.SubSystems.Configuration;
     using Castle.Windsor;
+    using Infrastructure.Log.Implementation;
+    using Infrastructure.Log.Interface;
 
     /// <summary>
     /// Install dependencies for production environment

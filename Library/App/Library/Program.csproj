@@ -72,6 +72,10 @@
       <Project>{8e2198cb-7b9d-483a-85a2-d3733fc3d5ac}</Project>
       <Name>Infrastructure.Log.Installer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Infrastructure.Log\Infrastructure.Log.csproj">
+      <Project>{5126daa3-225a-47c5-8693-221317c783f9}</Project>
+      <Name>Infrastructure.Log</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ServiceLayer\ServiceLayer.csproj">
       <Project>{e82d3694-39a5-4230-953e-052afa51ef9d}</Project>
       <Name>ServiceLayer</Name>
