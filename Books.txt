@@ -1,0 +1,4 @@
+poney	poney	False
+Gea1	Geralt de Rivia	True
+poney2	poney4	False
+nope	nope	False
