@@ -113,28 +113,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CrossCutting\CrossCutting.csproj">
-      <Project>{11c864bc-8fe1-4f41-9360-9b2c50f8874e}</Project>
-      <Name>CrossCutting</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DataServiceLayer\DataServiceLayer.csproj">
-      <Project>{5d89bed6-a9cb-4a8a-b403-9e9f55d95a00}</Project>
-      <Name>DataServiceLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\IDataServiceLayer\IDataServiceLayer.csproj">
-      <Project>{f35a4aca-c919-43b1-90e7-68f6b32abc38}</Project>
-      <Name>IDataServiceLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\IServiceLayer\IServiceLayer.csproj">
-      <Project>{5f10b1cf-0b62-4eaa-9725-d4a869a8d776}</Project>
-      <Name>IServiceLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ServiceLayer\ServiceLayer.csproj">
-      <Project>{3d14e894-20c6-44e3-92ec-8981509f058d}</Project>
-      <Name>ServiceLayer</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
@@ -145,6 +123,28 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CrossCutting\CrossCutting.csproj">
+      <Project>{d462559f-e6cf-4ba9-b98d-3555404e86e4}</Project>
+      <Name>CrossCutting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataServiceLayer\DataServiceLayer.csproj">
+      <Project>{fe20ab5e-1d91-4238-bd46-021e3e8d1fb5}</Project>
+      <Name>DataServiceLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IDataServiceLayer\IDataServiceLayer.csproj">
+      <Project>{1743a3ee-039e-4282-8135-c0f29ab5912c}</Project>
+      <Name>IDataServiceLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IServiceLayer\IServiceLayer.csproj">
+      <Project>{62328e85-5d66-4487-9211-c4e18209bcf5}</Project>
+      <Name>IServiceLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ServiceLayer\ServiceLayer.csproj">
+      <Project>{8df6729c-774e-4a78-988e-9f7db7ac327b}</Project>
+      <Name>ServiceLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />

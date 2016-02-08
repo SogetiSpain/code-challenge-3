@@ -55,12 +55,8 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IDataServiceLayer\IDataServiceLayer.csproj">
-      <Project>{f35a4aca-c919-43b1-90e7-68f6b32abc38}</Project>
+      <Project>{1743a3ee-039e-4282-8135-c0f29ab5912c}</Project>
       <Name>IDataServiceLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\IServiceLayer\IServiceLayer.csproj">
-      <Project>{5f10b1cf-0b62-4eaa-9725-d4a869a8d776}</Project>
-      <Name>IServiceLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
