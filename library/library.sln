@@ -3,14 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{2400A7A2-FD83-4A76-A170-E0FAE39C4954}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Log", "Infrastructure\Log", "{F00FE21F-9ACF-40F6-8309-F400E2DBBDD0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Log", "Infrastructure\Log\Infrastructure.Log\Infrastructure.Log.csproj", "{F31739FE-08C3-4C3C-9296-E690F92F8F4D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Log.Installer", "Infrastructure\Log\Infrastructure.Log.Installer\Infrastructure.Log.Installer.csproj", "{8E2198CB-7B9D-483A-85A2-D3733FC3D5AC}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{33CFE7C2-B060-4C67-9FFD-3E4D4102D0D4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Program", "App\Library\Program.csproj", "{527136BE-523B-4068-A182-9ED73100C47B}"
@@ -20,6 +12,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "App\DataAccessLayer\DataAccessLayer.csproj", "{EE5CD04D-53AF-497B-9DC8-4CC9DC68EA36}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceLayer", "App\ServiceLayer\ServiceLayer.csproj", "{E82D3694-39A5-4230-953E-052AFA51EF9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Log", "Infrastructure.Log\Infrastructure.Log.csproj", "{F31739FE-08C3-4C3C-9296-E690F92F8F4D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Log.Installer", "Infrastructure.Log.Installer\Infrastructure.Log.Installer.csproj", "{8E2198CB-7B9D-483A-85A2-D3733FC3D5AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
