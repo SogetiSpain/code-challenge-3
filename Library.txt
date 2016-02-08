@@ -1,0 +1,25 @@
+Library Status: 
+poney is available
+Gea1 is available
+|--------- o ---------|
+Library Status: 
+poney is available
+Gea1, Loan by: cram, on 07/02/2016 22:19:48
+|--------- o ---------|
+Library Status: 
+poney is available
+Gea1, Loan by: cram, on 07/02/2016 22:19:48
+poney2 is available
+|--------- o ---------|
+Library Status: 
+poney is available
+Gea1, Loan by: cram, on 07/02/2016 22:19:48 Must pay fine!!
+poney2 is available
+|--------- o ---------|
+Library Status: 
+poney is available
+Gea1, Loan by: cram, on 07/02/2016 22:19:48 Must pay fine!!
+poney2 is available
+reputes, Loan by: cram, on 07/02/2016 22:31:04
+nope is available
+|--------- o ---------|
