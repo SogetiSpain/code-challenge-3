@@ -15,6 +15,7 @@
             BookCreationState,
             BookReturnState,
             BookBookingState,
+            PayPenlaty,
             ExitState
         }
 
@@ -23,8 +24,9 @@
             InvalidInput,   //Press Invalid Key!
             Exit,           //Press ESC Key! 
             BookCreation,	//Press B Key! 
-            BookReturn,	    //Press R Key! 
-            BookBooking, 	//Press N Key! 
+            BookReturn,	    //Press D Key! 
+            BookBooking, 	//Press P Key! 
+            PenaltyPayment, //Press C Key
             Begin		    //StateMachine-Auto        	
         }
 
@@ -33,6 +35,7 @@
             {"R", Command.BookCreation},
             {"D", Command.BookReturn},
             {"P", Command.BookBooking},
+            {"C", Command.PenaltyPayment},
             {"ESCAPE", Command.Exit}
         };
 
