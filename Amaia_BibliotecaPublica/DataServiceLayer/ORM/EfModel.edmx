@@ -1,0 +1,558 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PublicLibraryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DocumentProperties">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeId" Type="int" Nullable="false" />
+          <Property Name="LanguageId" Type="int" Nullable="false" />
+          <Property Name="CanBeLent" Type="bit" Nullable="false" />
+          <Property Name="MaxDaysRent" Type="int" Nullable="false" />
+          <Property Name="FinePrice" Type="int" Nullable="false" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="80" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Documents">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DocumentPropertyId" Type="int" Nullable="false" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="80" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DocumentTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Fines">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="FineValue" Type="int" Nullable="false" />
+          <Property Name="IsPaid" Type="bit" Nullable="false" />
+          <Property Name="PaidDate" Type="datetime" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="80" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Languages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Text" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Loans">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="DocumentId" Type="int" Nullable="false" />
+          <Property Name="LoanDate" Type="datetime" Nullable="false" />
+          <Property Name="DueData" Type="datetime" Nullable="false" />
+          <Property Name="ReturnedData" Type="datetime" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="80" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PublicLibrary.dbo.DocumentList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DocumentList">
+          <Key>
+            <PropertyRef Name="DocumentId" />
+            <PropertyRef Name="Title" />
+            <PropertyRef Name="CanBeLent" />
+            <PropertyRef Name="MaxDaysRent" />
+            <PropertyRef Name="TypeCode" />
+          </Key>
+          <Property Name="DocumentId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CanBeLent" Type="bit" Nullable="false" />
+          <Property Name="MaxDaysRent" Type="int" Nullable="false" />
+          <Property Name="TypeCode" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_DocumentProperties_DocumentTypes">
+          <End Role="DocumentTypes" Type="Self.DocumentTypes" Multiplicity="1" />
+          <End Role="DocumentProperties" Type="Self.DocumentProperties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DocumentTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DocumentProperties">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DocumentProperties_Languages">
+          <End Role="Languages" Type="Self.Languages" Multiplicity="1" />
+          <End Role="DocumentProperties" Type="Self.DocumentProperties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Languages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DocumentProperties">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Documents_DocumentProperties">
+          <End Role="DocumentProperties" Type="Self.DocumentProperties" Multiplicity="1" />
+          <End Role="Documents" Type="Self.Documents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DocumentProperties">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Documents">
+              <PropertyRef Name="DocumentPropertyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fines_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Fines" Type="Self.Fines" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Fines">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Loans_Documents">
+          <End Role="Documents" Type="Self.Documents" Multiplicity="1" />
+          <End Role="Loans" Type="Self.Loans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Documents">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Loans">
+              <PropertyRef Name="DocumentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Loans_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Loans" Type="Self.Loans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Loans">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PublicLibraryModelStoreContainer">
+          <EntitySet Name="DocumentProperties" EntityType="Self.DocumentProperties" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Documents" EntityType="Self.Documents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DocumentTypes" EntityType="Self.DocumentTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fines" EntityType="Self.Fines" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Languages" EntityType="Self.Languages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Loans" EntityType="Self.Loans" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DocumentList" EntityType="Self.DocumentList" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DocumentList].[DocumentId] AS [DocumentId], 
+    [DocumentList].[Title] AS [Title], 
+    [DocumentList].[CanBeLent] AS [CanBeLent], 
+    [DocumentList].[MaxDaysRent] AS [MaxDaysRent], 
+    [DocumentList].[TypeCode] AS [TypeCode]
+    FROM [dbo].[DocumentList] AS [DocumentList]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_DocumentProperties_DocumentTypes" Association="Self.FK_DocumentProperties_DocumentTypes">
+            <End Role="DocumentTypes" EntitySet="DocumentTypes" />
+            <End Role="DocumentProperties" EntitySet="DocumentProperties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DocumentProperties_Languages" Association="Self.FK_DocumentProperties_Languages">
+            <End Role="Languages" EntitySet="Languages" />
+            <End Role="DocumentProperties" EntitySet="DocumentProperties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Documents_DocumentProperties" Association="Self.FK_Documents_DocumentProperties">
+            <End Role="DocumentProperties" EntitySet="DocumentProperties" />
+            <End Role="Documents" EntitySet="Documents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fines_Users" Association="Self.FK_Fines_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Fines" EntitySet="Fines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Loans_Documents" Association="Self.FK_Loans_Documents">
+            <End Role="Documents" EntitySet="Documents" />
+            <End Role="Loans" EntitySet="Loans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Loans_Users" Association="Self.FK_Loans_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Loans" EntitySet="Loans" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PublicLibraryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="PublicLibraryContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DocumentProperties" EntityType="PublicLibraryModel.DocumentProperty" />
+          <EntitySet Name="Documents" EntityType="PublicLibraryModel.Document" />
+          <EntitySet Name="DocumentTypes" EntityType="PublicLibraryModel.DocumentType" />
+          <EntitySet Name="Fines" EntityType="PublicLibraryModel.Fine" />
+          <EntitySet Name="Languages" EntityType="PublicLibraryModel.Language" />
+          <EntitySet Name="Loans" EntityType="PublicLibraryModel.Loan" />
+          <AssociationSet Name="FK_DocumentProperties_DocumentTypes" Association="PublicLibraryModel.FK_DocumentProperties_DocumentTypes">
+            <End Role="DocumentTypes" EntitySet="DocumentTypes" />
+            <End Role="DocumentProperties" EntitySet="DocumentProperties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DocumentProperties_Languages" Association="PublicLibraryModel.FK_DocumentProperties_Languages">
+            <End Role="Languages" EntitySet="Languages" />
+            <End Role="DocumentProperties" EntitySet="DocumentProperties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Documents_DocumentProperties" Association="PublicLibraryModel.FK_Documents_DocumentProperties">
+            <End Role="DocumentProperties" EntitySet="DocumentProperties" />
+            <End Role="Documents" EntitySet="Documents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Loans_Documents" Association="PublicLibraryModel.FK_Loans_Documents">
+            <End Role="Documents" EntitySet="Documents" />
+            <End Role="Loans" EntitySet="Loans" />
+          </AssociationSet>
+          <EntitySet Name="Users" EntityType="PublicLibraryModel.User" />
+          <AssociationSet Name="FK_Fines_Users" Association="PublicLibraryModel.FK_Fines_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Fine" EntitySet="Fines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Loans_Users" Association="PublicLibraryModel.FK_Loans_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Loan" EntitySet="Loans" />
+          </AssociationSet>
+          <EntitySet Name="DocumentList" EntityType="PublicLibraryModel.DocumentList" />
+        </EntityContainer>
+        <EntityType Name="DocumentProperty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeId" Type="Int32" Nullable="false" />
+          <Property Name="LanguageId" Type="Int32" Nullable="false" />
+          <Property Name="CanBeLent" Type="Boolean" Nullable="false" />
+          <Property Name="MaxDaysRent" Type="Int32" Nullable="false" />
+          <Property Name="FinePrice" Type="Int32" Nullable="false" />
+          <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUser" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="DocumentTypes" Relationship="PublicLibraryModel.FK_DocumentProperties_DocumentTypes" FromRole="DocumentProperties" ToRole="DocumentTypes" />
+          <NavigationProperty Name="Languages" Relationship="PublicLibraryModel.FK_DocumentProperties_Languages" FromRole="DocumentProperties" ToRole="Languages" />
+          <NavigationProperty Name="Documents" Relationship="PublicLibraryModel.FK_Documents_DocumentProperties" FromRole="DocumentProperties" ToRole="Documents" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DocumentPropertyId" Type="Int32" Nullable="false" />
+          <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUser" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="DocumentProperties" Relationship="PublicLibraryModel.FK_Documents_DocumentProperties" FromRole="Documents" ToRole="DocumentProperties" />
+          <NavigationProperty Name="Loans" Relationship="PublicLibraryModel.FK_Loans_Documents" FromRole="Documents" ToRole="Loans" />
+        </EntityType>
+        <EntityType Name="DocumentType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DocumentProperties" Relationship="PublicLibraryModel.FK_DocumentProperties_DocumentTypes" FromRole="DocumentTypes" ToRole="DocumentProperties" />
+        </EntityType>
+        <EntityType Name="Fine">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="FineValue" Type="Int32" Nullable="false" />
+          <Property Name="IsPaid" Type="Boolean" Nullable="false" />
+          <Property Name="PaidDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUser" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Users" Relationship="PublicLibraryModel.FK_Fines_Users" FromRole="Fine" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Text" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DocumentProperties" Relationship="PublicLibraryModel.FK_DocumentProperties_Languages" FromRole="Languages" ToRole="DocumentProperties" />
+        </EntityType>
+        <EntityType Name="Loan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="DocumentId" Type="Int32" Nullable="false" />
+          <Property Name="LoanDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DueData" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ReturnedData" Type="DateTime" Precision="3" />
+          <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUser" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Documents" Relationship="PublicLibraryModel.FK_Loans_Documents" FromRole="Loans" ToRole="Documents" />
+          <NavigationProperty Name="Users" Relationship="PublicLibraryModel.FK_Loans_Users" FromRole="Loan" ToRole="Users" />
+        </EntityType>
+        <Association Name="FK_DocumentProperties_DocumentTypes">
+          <End Type="PublicLibraryModel.DocumentType" Role="DocumentTypes" Multiplicity="1" />
+          <End Type="PublicLibraryModel.DocumentProperty" Role="DocumentProperties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DocumentTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DocumentProperties">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DocumentProperties_Languages">
+          <End Type="PublicLibraryModel.Language" Role="Languages" Multiplicity="1" />
+          <End Type="PublicLibraryModel.DocumentProperty" Role="DocumentProperties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Languages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DocumentProperties">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Documents_DocumentProperties">
+          <End Type="PublicLibraryModel.DocumentProperty" Role="DocumentProperties" Multiplicity="1" />
+          <End Type="PublicLibraryModel.Document" Role="Documents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DocumentProperties">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Documents">
+              <PropertyRef Name="DocumentPropertyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Loans_Documents">
+          <End Type="PublicLibraryModel.Document" Role="Documents" Multiplicity="1" />
+          <End Type="PublicLibraryModel.Loan" Role="Loans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Documents">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Loans">
+              <PropertyRef Name="DocumentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Fines" Relationship="PublicLibraryModel.FK_Fines_Users" FromRole="Users" ToRole="Fine" />
+          <NavigationProperty Name="Loans" Relationship="PublicLibraryModel.FK_Loans_Users" FromRole="Users" ToRole="Loan" />
+        </EntityType>
+        <Association Name="FK_Fines_Users">
+          <End Type="PublicLibraryModel.User" Role="Users" Multiplicity="1" />
+          <End Type="PublicLibraryModel.Fine" Role="Fine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Fine">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Loans_Users">
+          <End Type="PublicLibraryModel.User" Role="Users" Multiplicity="1" />
+          <End Type="PublicLibraryModel.Loan" Role="Loan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Loan">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="DocumentList">
+          <Key>
+            <PropertyRef Name="DocumentId" />
+            <PropertyRef Name="Title" />
+            <PropertyRef Name="CanBeLent" />
+            <PropertyRef Name="MaxDaysRent" />
+            <PropertyRef Name="TypeCode" />
+          </Key>
+          <Property Name="DocumentId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CanBeLent" Type="Boolean" Nullable="false" />
+          <Property Name="MaxDaysRent" Type="Int32" Nullable="false" />
+          <Property Name="TypeCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PublicLibraryModelStoreContainer" CdmEntityContainer="PublicLibraryContext">
+          <EntitySetMapping Name="DocumentProperties">
+            <EntityTypeMapping TypeName="PublicLibraryModel.DocumentProperty">
+              <MappingFragment StoreEntitySet="DocumentProperties">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="FinePrice" ColumnName="FinePrice" />
+                <ScalarProperty Name="MaxDaysRent" ColumnName="MaxDaysRent" />
+                <ScalarProperty Name="CanBeLent" ColumnName="CanBeLent" />
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Documents">
+            <EntityTypeMapping TypeName="PublicLibraryModel.Document">
+              <MappingFragment StoreEntitySet="Documents">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="DocumentPropertyId" ColumnName="DocumentPropertyId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DocumentTypes">
+            <EntityTypeMapping TypeName="PublicLibraryModel.DocumentType">
+              <MappingFragment StoreEntitySet="DocumentTypes">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fines">
+            <EntityTypeMapping TypeName="PublicLibraryModel.Fine">
+              <MappingFragment StoreEntitySet="Fines">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="PaidDate" ColumnName="PaidDate" />
+                <ScalarProperty Name="IsPaid" ColumnName="IsPaid" />
+                <ScalarProperty Name="FineValue" ColumnName="FineValue" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Languages">
+            <EntityTypeMapping TypeName="PublicLibraryModel.Language">
+              <MappingFragment StoreEntitySet="Languages">
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Loans">
+            <EntityTypeMapping TypeName="PublicLibraryModel.Loan">
+              <MappingFragment StoreEntitySet="Loans">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="ReturnedData" ColumnName="ReturnedData" />
+                <ScalarProperty Name="DueData" ColumnName="DueData" />
+                <ScalarProperty Name="LoanDate" ColumnName="LoanDate" />
+                <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="PublicLibraryModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DocumentList">
+            <EntityTypeMapping TypeName="PublicLibraryModel.DocumentList">
+              <MappingFragment StoreEntitySet="DocumentList">
+                <ScalarProperty Name="TypeCode" ColumnName="TypeCode" />
+                <ScalarProperty Name="MaxDaysRent" ColumnName="MaxDaysRent" />
+                <ScalarProperty Name="CanBeLent" ColumnName="CanBeLent" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
