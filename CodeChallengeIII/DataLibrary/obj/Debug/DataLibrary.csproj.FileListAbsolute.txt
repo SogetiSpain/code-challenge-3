@@ -1,5 +1,0 @@
-C:\Users\Marc F. Vidal\Documents\GitHub\code-challenge-3\CodeChallengeIII\DataLibrary\bin\Debug\DataLibrary.dll
-C:\Users\Marc F. Vidal\Documents\GitHub\code-challenge-3\CodeChallengeIII\DataLibrary\bin\Debug\DataLibrary.pdb
-C:\Users\Marc F. Vidal\Documents\GitHub\code-challenge-3\CodeChallengeIII\DataLibrary\obj\Debug\DataLibrary.csprojResolveAssemblyReference.cache
-C:\Users\Marc F. Vidal\Documents\GitHub\code-challenge-3\CodeChallengeIII\DataLibrary\obj\Debug\DataLibrary.dll
-C:\Users\Marc F. Vidal\Documents\GitHub\code-challenge-3\CodeChallengeIII\DataLibrary\obj\Debug\DataLibrary.pdb
