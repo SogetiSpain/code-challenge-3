@@ -57,12 +57,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Infrastructure.Log\Infrastructure.Log.csproj">
-      <Project>{f31739fe-08c3-4c3c-9296-e690f92f8f4d}</Project>
-      <Name>Infrastructure.Log</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
