@@ -1,4 +1,4 @@
-﻿namespace Library.App.DataAccessLayer
+﻿namespace Library.App.DataAccessLayer.Entities
 {
     using System;
     using System.Collections.Generic;
@@ -6,7 +6,9 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public class Class1
+    public class LibraryAppUserEntity
     {
+        public string Username { get; set; }
+
     }
 }

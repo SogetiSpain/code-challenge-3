@@ -10,38 +10,30 @@
     {
         public enum ProcessState
         {
-            Start,
-            BookRegisterOperation,
-            BookBookingOperation,
-            BookReturnOperation,
-            Exit,
-            BookRegistered,
-            BookReturned,
-            UserFined,
-            BookBooked,
-            Error
+            StartState,
+            ErrorState,
+            BookCreationState,
+            BookReturnState,
+            BookBookingState,
+            ExitState
         }
 
         public enum Command
         {
-            PressKeyB,
-            StoreBook,
-            Begin,
-            ReturningBook,
-            PressKeyR,
-            UserFinning,
-            PressKeyN,
-            PressKeyESC,
-            NotAllowed,
-            BookingBook,
+            InvalidInput,   //Press Invalid Key!
+            Exit,           //Press ESC Key! 
+            BookCreation,	//Press B Key! 
+            BookReturn,	    //Press R Key! 
+            BookBooking, 	//Press N Key! 
+            Begin		    //StateMachine-Auto        	
         }
 
-        public static Dictionary<string, Command> UserActions = new Dictionary<string, Command>()
+        public static Dictionary<string, Command> LibAppInstructions = new Dictionary<string, Command>()
         {
-            {"B", Command.PressKeyB},
-            {"R", Command.PressKeyR},
-            {"N", Command.PressKeyN},
-            {"ESCAPE", Command.PressKeyESC}
+            {"R", Command.BookCreation},
+            {"D", Command.BookReturn},
+            {"P", Command.BookBooking},
+            {"ESCAPE", Command.Exit}
         };
 
     }
